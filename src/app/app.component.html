@@ -1,58 +1,57 @@
-<nav class="container-fluid">
-  <div class="nav-bar-row row bg-row py-2 px-xl-5">
-    <div class="col-lg-6 d-none d-lg-block">
-      <div class="d-inline-flex align-items-center">
-        <a class="text-dark" href="">FAQs</a>
-        <span class="text-muted px-2">|</span>
-        <a class="text-dark" href="">Ayuda</a>
-        <span class="text-muted px-2">|</span>
-        <a class="text-dark" href="">Soporte</a>
+<header>
+  <nav class="container-fluid">
+    <div class="nav-bar-row row bg-row py-2 px-xl-5">
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="d-inline-flex align-items-center">
+          <a class="text-dark" href="">FAQs</a>
+          <span class="text-muted px-2">|</span>
+          <a class="text-dark" href="">Ayuda</a>
+          <span class="text-muted px-2">|</span>
+          <a class="text-dark" href="">Soporte</a>
+        </div>
+      </div>
+      <div class="col-lg-6 text-right text-lg-right">
+        <div class="d-inline-flex align-items-center">
+          <a class="text-dark px-2" href="">
+            <i class="fab fa-facebook-f fa-lg"></i>
+          </a>
+          <a class="text-dark px-2" href="">
+            <i class="fab fa-instagram fa-lg"></i>
+          </a>
+          <a class="text-dark px-2" href="https://api.whatsapp.com/send?phone=573228189019">
+            <i class="fab fa-whatsapp fa-lg"></i>
+          </a>
+        </div>
       </div>
     </div>
-    <div class="col-lg-6 text-right text-lg-right">
-      <div class="d-inline-flex align-items-center">
-        <a class="text-dark px-2" href="">
-          <i class="fab fa-facebook-f fa-lg"></i>
+    <div class="nav-bar-row row align-items-center py-1">
+      <div class="col-lg-3 text-center">
+        <img src="../../../assets/images/common/logo.png" alt="img" style="height:80px; align-items: center;">
+      </div>
+      <div class="col-lg-6 col-6 text-left">
+        <app-search></app-search>
+      </div>
+      <div class="col-lg-3 col-6 text-right">
+        <a class="btn">
+          <fa-icon [icon]="faUserCircle"></fa-icon>
+          <span class="badge">Iniciar sesión</span>
         </a>
-        <a class="text-dark px-2" href="">
-          <i class="fab fa-instagram fa-lg"></i>
-        </a>
-        <a class="text-dark px-2" href="https://api.whatsapp.com/send?phone=573228189019">
-          <i class="fab fa-whatsapp fa-lg"></i>
-        </a>
+        <span class="text-muted">|</span>
+        <app-cart-status></app-cart-status>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row bg-row py-2 px-xl-5">
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="d-inline-flex align-items-center">
+          <a *ngFor="let productCategory of productCategories" routerLink="/category/{{productCategory.id}}"
+            routerLinkActive="active-link">{{productCategory.categoryName}}<span class="text-muted px-2">|</span></a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="nav-bar-row row align-items-center py-1">
-    <div class="col-lg-3 text-center">
-      <img src="../../../assets/images/common/logo.png" alt="img" style="height:80px; align-items: center;">
-    </div>
-    <div class="col-lg-6 col-6 text-left">
-      <app-search></app-search>
-    </div>
-    <div class="col-lg-3 col-6 text-right">
-      <a class="btn">
-        <fa-icon [icon]="faUserCircle"></fa-icon>
-        <span class="badge">Iniciar sesión</span>
-      </a>
-      <span class="text-muted">|</span>
-      <a href="" class="btn">
-        <fa-icon [icon]="faCartShopping"></fa-icon>
-        <span class="badge">0</span>
-      </a>
-    </div>
-  </div>
-</nav>
-<div class="container-fluid">
-  <div class="row bg-row py-2 px-xl-5">
-    <div class="col-lg-6 d-none d-lg-block">
-      <div class="d-inline-flex align-items-center">
-        <a *ngFor="let productCategory of productCategories" routerLink="/category/{{productCategory.id}}"
-          routerLinkActive="active-link">{{productCategory.categoryName}}<span class="text-muted px-2">|</span></a>
-      </div>
-    </div>
-  </div>
-</div>
+</header>
 <router-outlet></router-outlet>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
