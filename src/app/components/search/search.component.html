@@ -1,0 +1,9 @@
+<div class="input-group">
+    <input #myInput type="text" class="form-control" placeholder="Búsqueda de productos..."
+        (keyup.enter)="doSearch(myInput.value)" />
+    <div class="input-group-append">
+        <a (click)="doSearch(myInput.value)" class="btn">
+            <fa-icon [icon]="faSearch"></fa-icon>
+        </a>
+    </div>
+</div>
