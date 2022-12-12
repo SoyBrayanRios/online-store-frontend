@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between bg-light border">
-                <a href="" class="btn btn-sm text-dark p-0">
+                <a routerLink="/products/{{product.id}}" class="btn btn-sm text-dark p-0">
                     <fa-icon [icon]="faEye"></fa-icon> View Detail
                 </a>
                 <button (click)="addToCart(product)" class="btn btn-sm text-dark p-0">

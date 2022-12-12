@@ -21,12 +21,7 @@ export class CartService {
 
     if (this.cartItems.length > 0) {
       //Find the item in the cart based on item id
-      for (let cartItem of this.cartItems) {
-        if (cartItem.id === theCartItem.id) {
-          existingCartItem = cartItem;
-          break;
-        }
-      }
+      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id === theCartItem.id)!;
       //Check if we found it
       alreadyExistsInCart = (existingCartItem != undefined);
     }
@@ -69,4 +64,24 @@ export class CartService {
       console.log(`Total Price: ${totalPriceValue.toFixed(2)}, totalQuantity: ${totalQuantityValue}`);
       
   }
+
+  decrementQuantity(cartItem: CartItem) {
+    cartItem.quantity--;
+    if (cartItem.quantity === 0) {
+      this.remove(cartItem);
+    } else {
+      this.computeCartTotals();
+    }
+  }
+
+  remove(cartItem: CartItem) {
+    //Get index of item in the array
+    const itemIndex = this.cartItems.findIndex( tempCartItem => tempCartItem.id === cartItem.id);
+    //If found, remove the item from the array at the given index
+    if (itemIndex > -1) {
+      this.cartItems.splice(itemIndex, 1);
+      this.computeCartTotals();
+    }
+  }
+
 }

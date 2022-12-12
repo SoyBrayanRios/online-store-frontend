@@ -1,5 +1,5 @@
-<a href="" class="btn">
+<a routerLink="/cart-details" class="btn">
     <fa-icon [icon]="faCartShopping"></fa-icon>
-    <span class="badge">0</span>
-    <span class="badge">$25</span>
+    <span class="badge">{{totalQuantity}}</span>
+    <span class="badge">{{totalPrice | currency: 'USD'}}</span>
 </a>
