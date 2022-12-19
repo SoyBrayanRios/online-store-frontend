@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
   searchMode: boolean = false;
 
   pageNumber: number = 1;
-  pageSize: number = 9;
+  pageSize: number = 12;
   totalElements: number = 0;
   previousCategoryId: number = 1;
 
