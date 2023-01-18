@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
@@ -16,10 +17,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SignupComponent } from './components/signup/signup.component';
+import { authInterceptorProviders } from './services/interceptors/auth.interceptor';
+import { AdminComponent } from './components/panel/admin/admin.component';
+import { UserComponent } from './components/panel/user/user.component';
+import { AdminGuard } from './services/guards/admin.guard';
+import { StandardGuard } from './services/guards/standard.guard';
+import { AllGuard } from './services/guards/all.guard';
+
 
 const routes: Routes = [
-  {path: 'cart-details', component: CartDetailsComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  {path: 'user', component: UserComponent, canActivate: [StandardGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'cart-details', component: CartDetailsComponent, canActivate: [AllGuard]},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'search/:keyword', component: SideFilterComponent},
@@ -38,17 +58,28 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent,
+    SignupComponent,
+    AdminComponent,
+    UserComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FontAwesomeModule,
     NgbModule,
-    ReactiveFormsModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSnackBarModule,
+    MatButtonModule
   ],
-  providers: [ProductService],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

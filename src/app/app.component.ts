@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faRightFromBracket, faCartShopping, faUserCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket, faCartShopping, faUserCircle, faSearch, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { ProductCategory } from './common/product-category';
+import { LoginService } from './services/login.service';
 import { ProductService } from './services/product.service';
 
 @Component({
@@ -14,15 +15,37 @@ export class AppComponent implements OnInit{
   faCartShopping = faCartShopping;
   faUserCircle = faUserCircle;
   faSearch = faSearch;
+  faArrowRightFromBracket = faArrowRightFromBracket;
 
+  username: string = "";
+  role: string = "STANDARD";
   productCategories: ProductCategory[] = [];
 
-  constructor(private productService: ProductService) {
-
+  constructor(private productService: ProductService,
+    public loginService: LoginService) {
   }
 
   ngOnInit(): void {
-      this.listProductCategories();
+    this.updateRole();
+    this.updateUsername();
+    this.listProductCategories();
+  }
+
+  updateRole() {
+    this.loginService.role.subscribe(
+      data => this.role = data
+    );
+  }
+
+  updateUsername() {
+    this.loginService.username.subscribe(
+      data => this.username = data
+    );
+  }
+
+  public logout() {
+    this.loginService.logout();
+    window.location.reload();
   }
 
   listProductCategories() {

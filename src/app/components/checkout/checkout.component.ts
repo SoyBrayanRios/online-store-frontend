@@ -35,6 +35,8 @@ export class CheckoutComponent implements OnInit {
       customer: this.formBuilder.group({
         firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
         lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+        docType: new FormControl(''),
+        docNumber: new FormControl('', [Validators.required, Validators.minLength(5)]),
         email: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
         phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
       }),
@@ -70,6 +72,8 @@ export class CheckoutComponent implements OnInit {
 
   get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
   get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
+  get docType() { return this.checkoutFormGroup.get('customer.docType'); }
+  get docNumber() { return this.checkoutFormGroup.get('customer.docNumber'); }
   get email() { return this.checkoutFormGroup.get('customer.email'); }
   get phone() { return this.checkoutFormGroup.get('customer.phone'); }
 

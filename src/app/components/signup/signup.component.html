@@ -1,0 +1,56 @@
+<div class="bootstrap-wrapper">
+    <div class="container" style="padding-top: 10vh;">
+        <div class="row mt20">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <div class="container text-center">
+                        <img src="../../../assets/images/common/signup_icon.png" width="50" height="50">
+                    </div>
+
+                    <h4 class="text-center">Registro</h4>
+                    <!--<form [formGroup]="signupFormGroup" (ngSubmit)="formSubmit()">-->
+                    <form [formGroup]="signUpFormGroup" (ngSubmit)="formSubmit()">
+                        <div formGroupName="signupData">
+                            <mat-form-field class="mid-width-r" appearance="outline">
+                                <mat-label>Nombre de usuario</mat-label>
+                                <input formControlName="username" name="username" matInput
+                                    placeholder="Digite su nombre de usuario">
+                                <mat-hint>El nombre de usuario debe ser valido</mat-hint>
+                            </mat-form-field>
+                            <mat-form-field class="mid-width-l" appearance="outline">
+                                <mat-label>Contraseña</mat-label>
+                                <input formControlName="password" class="password" name="password" type="password"
+                                    matInput placeholder="Digite su contraseña">
+                                <mat-hint>La contraseña debe ser valida</mat-hint>
+                            </mat-form-field>
+                            <mat-form-field class="mid-width-r" appearance="outline">
+                                <mat-label>Nombre</mat-label>
+                                <input formControlName="name" name="name" matInput
+                                    placeholder="Digite su nombre">
+                            </mat-form-field>
+                            <mat-form-field class="mid-width-l" appearance="outline">
+                                <mat-label>Apellido</mat-label>
+                                <input formControlName="lastName" name="lastName" matInput
+                                    matInput placeholder="Digite su apellido">
+                            </mat-form-field>
+                            <mat-form-field class="full-width-1" appearance="outline">
+                                <mat-label>Correo</mat-label>
+                                <input formControlName="email" name="email" matInput
+                                    matInput placeholder="Correo principal">
+                            </mat-form-field>
+                            <mat-form-field class="full-width-2" appearance="outline">
+                                <mat-label>Celular</mat-label>
+                                <input formControlName="phone" name="phone" matInput 
+                                    matInput placeholder="Teléfono">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="container text-center">
+                            <button type="submit" mat-raised-button color="primary">Registrarme</button>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

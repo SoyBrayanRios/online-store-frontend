@@ -1,0 +1,25 @@
+.full-width {
+    width: 100%;
+}
+
+.full-width-1 {
+    width: 70%;
+}
+
+.full-width-2 {
+    width: 30%;
+}
+
+.mid-width-l {
+    width: 50%;
+    padding-left: 2px;
+}
+
+.mid-width-r {
+    width: 50%;
+    padding-right: 2px;
+}
+
+.container {
+    align-items: center;
+}

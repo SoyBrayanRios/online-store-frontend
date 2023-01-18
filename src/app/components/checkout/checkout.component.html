@@ -30,6 +30,31 @@
                         </div>
                     </div>
                     <div class="col-md-6 form-group">
+                        <label>Tipo identificación</label>
+                        <!--<input formControlName="docType" class="form-control" type="text" placeholder="Doe">-->
+                        <select class="form-control" name="docType" formControlName="docType">
+                            <option value="RC">Registro civil de nacimiento</option>
+                            <option value="TI">tarjeta de identidad</option>
+                            <option value="CC">Cédula de ciudadanía</option>
+                            <option value="TE">Tarjeta de extranjería</option>
+                            <option value="CE">Cédula de extranjería</option>
+                            <option value="NT">NIT</option>
+                            <option value="PA">Pasaporte</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>No. identificación</label>
+                        <input formControlName="docNumber" class="form-control" type="text" placeholder="Doe">
+                        <div *ngIf="docNumber!.invalid && (docNumber!.dirty || docNumber!.touched)" class="alert alert-danger mt-1" style="margin: 0%; padding: 0 0 0 4px;">
+                            <div *ngIf="docNumber!.errors!['required']">
+                                Número de identificación requerido
+                            </div>
+                            <div *ngIf="docNumber!.errors!['minlength']">
+                                El número de identificación debe tener al menos 5 caracteres
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
                         <label>Correo electrónico</label>
                         <input formControlName="email" class="form-control" type="text" placeholder="example@email.com">
                         <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-danger mt-1" style="margin: 0%; padding: 0 0 0 4px;">

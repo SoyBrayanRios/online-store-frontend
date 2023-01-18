@@ -34,12 +34,28 @@
         <app-search></app-search>
       </div>
       <div class="col-lg-3 col-6 text-right">
-        <a class="btn">
+        <a *ngIf="!loginService.isLoggedIn()" routerLink="/signup" class="btn">
+          <fa-icon [icon]="faUserCircle"></fa-icon>
+          <span class="badge">Registrate</span>
+        </a>
+        <a *ngIf="!loginService.isLoggedIn()" routerLink="/login" class="btn">
           <fa-icon [icon]="faUserCircle"></fa-icon>
           <span class="badge">Iniciar sesión</span>
         </a>
+        <a *ngIf="loginService.isLoggedIn() && role ==='ADMIN'" routerLink="/admin" class="btn">
+          <fa-icon [icon]="faUserCircle"></fa-icon>
+          <span class="badge">{{username}}</span>
+        </a>
+        <a *ngIf="loginService.isLoggedIn() && role ==='STANDARD'" routerLink="/user" class="btn">
+          <fa-icon [icon]="faUserCircle"></fa-icon>
+          <span class="badge">{{username}}</span>
+        </a>
         <span class="text-muted">|</span>
         <app-cart-status></app-cart-status>
+        <span *ngIf="loginService.isLoggedIn()" class="text-muted">|</span>
+        <a *ngIf="loginService.isLoggedIn()" (click)="logout()" class="btn">
+          <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+        </a>
       </div>
     </div>
   </nav>
