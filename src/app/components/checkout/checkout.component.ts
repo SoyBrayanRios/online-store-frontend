@@ -8,6 +8,7 @@ import { OrderItem } from 'src/app/common/order-item';
 import { Purchase } from 'src/app/common/purchase';
 import { CartService } from 'src/app/services/cart.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -104,9 +105,13 @@ export class CheckoutComponent implements OnInit {
     //Create orderItems from cartItems
     let orderItems: OrderItem[] = cartItems.map(tempCartItem => new OrderItem(tempCartItem));
     //Set up purchase
+    let user = JSON.parse(localStorage.getItem('user')!).id;
+    //Set up purchase
     let purchase = new Purchase();
     //Populate purchase - customer
     purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+    //Populate purchase - user
+    purchase.userId = +user!;
     //Populate purchase - shipping address
     purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
     //Populate purchase - billing address
@@ -117,12 +122,20 @@ export class CheckoutComponent implements OnInit {
     //Call REST API via the CheckoutService
     this.checkoutService.placeOrder(purchase).subscribe({
       next: response => {
-        alert(`La orden ha sido recibida.\n>Numero de order: ${response.orderTrackingNumber}`);
+        Swal.fire(
+          'Pedido realizado!',
+          `La orden ha sido recibida.\nNumero de order: ${response.orderTrackingNumber}`,
+          'success'
+        )
         //Reset cart
         this.resetCart();
       },
       error: err => {
-        alert(`Hubo un error al crear la orden: ${err.message}`);
+        Swal.fire(
+          'Error al registrar el pedido!',
+          `Hubo un error al crear la orden: ${err.message}`,
+          'error'
+        )
       }
     });
   }

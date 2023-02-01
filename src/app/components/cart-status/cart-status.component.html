@@ -1,5 +1,12 @@
-<a routerLink="/cart-details" class="btn">
+<!--<a routerLink="/cart-details" class="btn border">
     <fa-icon [icon]="faCartShopping"></fa-icon>
     <span class="badge">{{totalQuantity}}</span>
+    <span class="badge">|</span>
     <span class="badge">{{totalPrice | currency: 'USD'}}</span>
+</a>-->
+
+<a routerLink="/cart-details" class="demo-section">
+    <mat-icon matBadge="{{totalQuantity}}" matBadgeColor="warn">
+        <fa-icon [icon]="faCartShopping"></fa-icon>
+    </mat-icon>
 </a>

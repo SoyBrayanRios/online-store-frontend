@@ -1,1 +1,35 @@
-<p>admin works!</p>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-3 col-md-3 col-4 border-right">
+            <div class="mb-4 pb-4">
+                <h3 class="font-weight-semi-bold mb-4">Hola {{username}}</h3>
+                <h5 class="font-weight-semi-bold mb-4">Mi cuenta</h5>
+                <form>
+                  <a (click)="createComponent('personal-info')" style="cursor: pointer;">Mis datos personales</a>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <a (click)="createComponent('order-list')" style="cursor: pointer;">Mis direcciones</a>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <a (click)="createComponent('order-list')"style="cursor: pointer;">Mis pedidos</a>
+                  </div>
+                </form>
+                <div *ngIf="loginService.isLoggedIn() && role ==='ADMIN'">
+                  <h5 class="font-weight-semi-bold mb-4">Administrador</h5>
+                  <form>
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                      <a (click)="createComponent('order-list')" style="cursor: pointer;">Inventario</a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                      <a (click)="createComponent('order-list')" style="cursor: pointer;">Gestión de pedidos</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-8">
+            <ng-template appDynamicHost></ng-template>
+        </div>
+    </div>
+</div>

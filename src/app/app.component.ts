@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faRightFromBracket, faCartShopping, faUserCircle, faSearch, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faRightFromBracket, faCartShopping, faUserCircle, faSearch, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { ProductCategory } from './common/product-category';
 import { LoginService } from './services/login.service';
 import { ProductService } from './services/product.service';
@@ -16,6 +16,8 @@ export class AppComponent implements OnInit{
   faUserCircle = faUserCircle;
   faSearch = faSearch;
   faArrowRightFromBracket = faArrowRightFromBracket;
+  faBars = faBars;
+  isMenuCollapsed = true;
 
   username: string = "";
   role: string = "STANDARD";
