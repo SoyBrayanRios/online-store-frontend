@@ -15,6 +15,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
   role: string = "STANDARD";
   username: string = "";
+  component: string = "personal-info";
   constructor(public loginService: LoginService) { }
   
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dynamicHost.viewContainerRef.clear();
-    this.createComponent('personal-info');
+    this.createComponent(this.component);
   }
 
   updateRole() {
@@ -43,10 +44,13 @@ export class AdminComponent implements OnInit, AfterViewInit {
     this.dynamicHost.viewContainerRef.clear();
     switch (component) {
       case "order-list":
+        this.component = "order-list";
         this.dynamicHost.viewContainerRef.createComponent(OrderListComponent); break;
       case "personal-info":
+        this.component = "personal-info";
         this.dynamicHost.viewContainerRef.createComponent(AccountInfoComponent); break;
       case "addresses":
+        this.component = "addresses";
         this.dynamicHost.viewContainerRef.createComponent(OrderListComponent); break;
       default:
         this.dynamicHost.viewContainerRef.createComponent(OrderListComponent); break;

@@ -1,12 +1,12 @@
-<div class="row pb-3">
-    <div *ngFor="let product of products" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+<div class="row pb-1 main-bg">
+    <div *ngFor="let product of products" class="col-lg-3 col-md-4 col-sm-6 col-6 pb-1">
         <div class="card product-item border-0 mb-4">
             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                 <a routerLink="/products/{{product.id}}">
                     <img class="img-fluid w-100" src="{{product.imageUrl}}" alt="">
                 </a>
             </div>
-            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+            <div class="card-body border-left border-right text-center">
                 <a routerLink="/products/{{product.id}}">
                     <h6 class="text-truncate mb-3">{{product.name}}</h6>
                 </a>
@@ -17,7 +17,7 @@
             </div>
             <div class="card-footer d-flex justify-content-between bg-light border">
                 <a routerLink="/products/{{product.id}}" class="btn btn-sm text-dark p-0">
-                    <fa-icon [icon]="faEye"></fa-icon> View Detail
+                    <fa-icon [icon]="faEye"></fa-icon> Ver detalle
                 </a>
                 <button (click)="addToCart(product)" class="btn btn-sm text-dark p-0">
                     <fa-icon [icon]="faCartShopping"></fa-icon> Agregar al carrito

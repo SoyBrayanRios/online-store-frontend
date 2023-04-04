@@ -23,7 +23,7 @@
           <a href="">Soporte</a>
         </div>
       </div>
-      <div class="col-lg-6 text-right text-lg-right">
+      <div class="res-center col-lg-6 text-right text-lg-right">
         <div class="d-inline-flex align-items-center">
           <a class="text-primary px-2" href="">
             <i class="fab fa-facebook-f fa-lg"></i>
@@ -39,13 +39,19 @@
     </div>
     <!--<div class="nav-bar-row row align-items-center py-1">-->
     <div class="nav-bar-row row align-items-center py-10 px-xl-5" style="padding-bottom: 1vh;">
-      <div class="col-lg-2 col-md-3 col-sm-12 col-12 text-center">
+      <div class="res-hidden col-lg-2 col-md-3 text-center">
         <a routerLink="/">
           <img src="../../../assets/images/common/logo.png" alt="img"
             style="height:12vh; padding-top: 1vh; padding-bottom: 1vh; align-items: center;">
         </a>
       </div>
-      <div class="col-lg-9 col-md-8 col-sm-10 col-10 text-left">
+      <div class=" res-show col-sm-2 col-2 text-center">
+        <a routerLink="/">
+          <img src="../../../assets/images/common/logo-res.png" alt="img"
+            style="width:13vw; padding-top: 1vh; padding-bottom: 1vh; align-items: center;">
+        </a>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-8 col-8 text-left">
         <app-search></app-search>
       </div>
       <!--<div class="col-lg-2 col-md-2 col-sm-1 col-1 text-left res-hidden">
@@ -56,7 +62,7 @@
           <span>Bienvenido {{username}}</span>
         </a>
       </div>-->
-      <div class="col-lg-1 col-md-1 col-sm-2 col-2 text-center">
+      <div class="col-lg-1 col-md-1 col-sm-1 col-1 text-center">
         <app-cart-status></app-cart-status>
       </div>
     </div>

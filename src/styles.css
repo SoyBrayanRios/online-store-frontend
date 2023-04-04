@@ -634,6 +634,10 @@ pre code {
     margin-left: auto;
 }
 
+#main-bg {
+    background-color: rgb(240, 240, 240);
+}
+
 @media (min-width: 576px) {
 
     .container,
@@ -675,6 +679,8 @@ pre code {
 
 .nav-bar-row {
     background-color: lightgray;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 
 .row {
@@ -4963,8 +4969,8 @@ input[type="button"].btn-block {
     padding: 1.25rem;
 }
 
-.card-img,
-.card-img-top,
+.card-body-img,
+.card-body-img-top,
 .card-img-bottom {
     flex-shrink: 0;
     width: 100%;
@@ -10298,6 +10304,7 @@ button.bg-dark:focus {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 1%;
 }
 
 .text-left {
@@ -20341,7 +20348,7 @@ a.text-dark:hover, a.text-dark:focus {
   animation: action 1s infinite alternate;
 }
 
-@media screen and (min-width: 360px) and (max-width: 770px) {
+@media screen and (min-width: 1px) and (max-width: 770px) {
     .res-hidden {
       display: none;
     }
@@ -20350,6 +20357,14 @@ a.text-dark:hover, a.text-dark:focus {
 @media screen and (max-width: 770px) {
     .res-show {
       display: flex;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .res-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 

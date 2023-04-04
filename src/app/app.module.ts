@@ -41,10 +41,16 @@ import { DynamicHostDirective } from './directives/dynamic-host.directive';
 import { AccountInfoComponent } from './components/account-info/account-info.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LoadingInterceptor } from './services/interceptors/loading.interceptor';
+import { OrderOverviewComponent } from './components/order-overview/order-overview.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { CategoryCarouselComponent } from './components/category-carousel/category-carousel.component';
 
 
 const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AllGuard]},
+  {path: 'admin/order-list/test', component: OrderOverviewComponent, canActivate: [AllGuard]},
+  //{path: 'admin/addresses', component: , canActivate: [AllGuard]},
+  {path: 'admin/order-list', component: OrderListComponent, canActivate: [AllGuard]},
   {path: 'orders', component: OrderListComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
@@ -55,8 +61,9 @@ const routes: Routes = [
   {path: 'category/:id', component: SideFilterComponent},
   {path: 'category', component: SideFilterComponent},
   {path: 'products', component: SideFilterComponent},
-  {path: '', redirectTo: '/products', pathMatch: 'full'},
-  {path: '**', redirectTo: '/products', pathMatch: 'full'}
+  {path: 'home', component: MainPageComponent, canActivate: [AllGuard]},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 @NgModule({
   declarations: [
@@ -76,7 +83,10 @@ const routes: Routes = [
     OrderListComponent,
     DynamicHostDirective,
     AccountInfoComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    OrderOverviewComponent,
+    MainPageComponent,
+    CategoryCarouselComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

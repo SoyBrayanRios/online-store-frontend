@@ -1,20 +1,30 @@
-<div class="underlined">
-    <h5 class="font-weight-semi-bold mb-4">Mis pedidos</h5>
-</div>
-<br>
-<div class="card border-secondary mb-5">
-    <div class="card-header bg-secondary border-0" style="display: flex;">
-        <h6 class="font-weight-semi-bold m-0 col-lg-9 col-md-8 col-12">Pedido #skjdxncjksdnckjsdn</h6>
-        <a routerLink="/checkout" class="res-hidden btn btn-primary col-lg-3 col-md-4">Ver detalle</a>
-    </div>
-    <div class="card-body">
-        <h6 class="font-weight-medium">Subtotal</h6>
-        <div class="d-flex justify-content-between">
-            <h6 class="font-weight-medium">Shipping</h6>
-            <h6 class="font-weight-medium">$10</h6>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-3 col-md-3 col-4 border-right">
+          <app-sidenav></app-sidenav>
         </div>
-    </div>
-    <div class="card-footer res-show">
-        <a routerLink="/checkout" class="res-show btn btn-primary col-12">Ver detalle</a>
+        <div class="col-lg-9 col-md-9 col-8">
+            <div class="underlined">
+                <h5 class="font-weight-semi-bold mb-4">Mis pedidos</h5>
+            </div>
+            <br>
+            <div *ngFor="let order of orders" class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0" style="display: flex;">
+                    <h6 class="font-weight-semi-bold m-0 col-lg-9 col-md-8 col-12">Pedido #{{order.orderTrackingNumber}}</h6>
+                    <a routerLink="/admin/order-list/test" class="res-hidden btn btn-primary col-lg-3 col-md-4">Ver detalle</a>
+                </div>
+                <div class="card-body">
+                    <h6>Estado: {{order.status.name}} <h6 *ngIf="order.status==4"> el {{order.lastUpdated}}</h6></h6>
+                    <h6>Fecha de compra: {{order.dateCreated | date: 'dd/MM/yyyy'}}</h6>
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Total </h6>
+                        <h6 class="font-weight-medium">${{order.totalPrice}}</h6>
+                    </div>
+                </div>
+                <div class="card-footer res-show">
+                    <a routerLink="/admin/order-list/test" class="res-show btn btn-primary col-12">Ver detalle</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

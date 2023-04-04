@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
-
+  role: string = "STANDARD";
+  username: string = "";
+  constructor(public loginService: LoginService) { }
+  
   ngOnInit(): void {
+    this.updateRole();
+    this.updateUsername();
+  }
+
+  updateRole() {
+    this.loginService.role.subscribe(
+      data => this.role = data
+    );
+  }
+
+  updateUsername() {
+    this.loginService.username.subscribe(
+      data => this.username = data
+    );
   }
 
 }
